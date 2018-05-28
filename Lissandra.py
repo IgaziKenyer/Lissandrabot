@@ -6,6 +6,7 @@ from discord.ext.commands import Bot
 import asyncio
 import requests
 import json
+import os
 
 bot = commands.Bot(command_prefix=">")
 #api_adress = "http://api.openweathermap.org/data/2.5/appid=a677e1f4b9195e2b3437318ea0473e74&q="
@@ -27,7 +28,7 @@ async def Csitenno(ctx):
     #Krouzen = Bern
     #Roudesh = Munich, Germany
     #Jungla de las Pestes = Manaus, Brazil
-    api_adress = "http://api.openweathermap.org/data/2.5/forecast?id=1814906&APPID=a677e1f4b9195e2b3437318ea0473e74&lang=es&units=metric"
+    api_adress = str(os.environ(['RIOT_KEY']))
     data= requests.get(api_adress)
     read= data.json()
     
@@ -94,7 +95,7 @@ async def Csitenno(ctx):
 
 @bot.command(pass_context=True)
 async def Ckamikune(ctx):
-    api_adress = "http://api.openweathermap.org/data/2.5/forecast?id=1808926&APPID=a677e1f4b9195e2b3437318ea0473e74&lang=es&units=metric"
+    api_adress = str(os.environ(['RIOT_KEY']))
     data= requests.get(api_adress)
     read= data.json()
     icon = read["list"][0]["weather"][0]["icon"]
@@ -140,7 +141,7 @@ async def Ckamikune(ctx):
 
 @bot.command(pass_context=True)
 async def Cshinko(ctx):
-    api_adress = "http://api.openweathermap.org/data/2.5/forecast?id=1814906&APPID=a677e1f4b9195e2b3437318ea0473e74&lang=es&units=metric"
+    api_adress = str(os.environ(['RIOT_KEY']))
     data= requests.get(api_adress)
     read= data.json()
     icon = read["list"][0]["weather"][0]["icon"]
@@ -187,7 +188,7 @@ async def Cshinko(ctx):
 @bot.command(pass_context=True)
 async def c(ctx,arg):
     if arg == "sitenno":
-        api_adress = "http://api.openweathermap.org/data/2.5/forecast?id=1814906&APPID=a677e1f4b9195e2b3437318ea0473e74&lang=es&units=metric"
+        api_adress = str(os.environ(['RIOT_KEY']))
         data= requests.get(api_adress)
         read= data.json()
         icon = read["list"][0]["weather"][0]["icon"]
@@ -228,7 +229,7 @@ async def c(ctx,arg):
         embed.set_footer(text="Informacion recopilada por el gremio de aventureros")
         await bot.say( embed=embed)
     elif arg == "kamikune":
-        api_adress = "http://api.openweathermap.org/data/2.5/forecast?id=1808926&APPID=a677e1f4b9195e2b3437318ea0473e74&lang=es&units=metric"
+        api_adress = str(os.environ(['RIOT_KEY']))
         data= requests.get(api_adress)
         read= data.json()
         icon = read["list"][0]["weather"][0]["icon"]
@@ -269,7 +270,7 @@ async def c(ctx,arg):
         embed.set_footer(text="Informacion recopilada por el gremio de aventureros")
         await bot.say( embed=embed)
     elif arg == "shinko":
-        api_adress = "http://api.openweathermap.org/data/2.5/forecast?id=1814906&APPID=a677e1f4b9195e2b3437318ea0473e74&lang=es&units=metric"
+        api_adress = str(os.environ(['RIOT_KEY']))
         data= requests.get(api_adress)
         read= data.json()
         icon = read["list"][0]["weather"][0]["icon"]
@@ -310,7 +311,7 @@ async def c(ctx,arg):
         embed.set_footer(text="Informacion recopilada por el gremio de aventureros")
         await bot.say( embed=embed)
     elif arg == "krouzen":
-        api_adress = "http://api.openweathermap.org/data/2.5/forecast?id=2661552&APPID=a677e1f4b9195e2b3437318ea0473e74&lang=es&units=metric"
+        api_adress = str(os.environ(['RIOT_KEY']))
         data= requests.get(api_adress)
         read= data.json()
         icon = read["list"][0]["weather"][0]["icon"]
@@ -354,7 +355,7 @@ async def c(ctx,arg):
         print (icon)
         print (icono)
     else: # Para Ubicaciones del mundo real
-        api_adress = "http://api.openweathermap.org/data/2.5/forecast?q={}&APPID=a677e1f4b9195e2b3437318ea0473e74&lang=es&units=metric".format(arg)
+        api_adress = str(os.environ(['RIOT_KEY']))
         data= requests.get(api_adress)
         read= data.json()
         icon = read["list"][0]["weather"][0]["icon"]
@@ -426,4 +427,4 @@ async def embed(ctx):
     embed.set_author(name="Igazi Kenyer")
     embed.add_field(name="This is a field", value="no, it isnt", inline=True)
     await bot.say(embed=embed)
-bot.run("NDQyOTMzMzM4ODM2MTcyODAy.Ddvl5g.4PB-bqctDv6THSDSYlhVu8l0RfA")
+bot.run(os.environ['BOT_TOKEN'])
