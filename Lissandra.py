@@ -9,7 +9,7 @@ import json
 import os
 
 bot = commands.Bot(command_prefix=">")
-#api_adress = "http://api.openweathermap.org/data/2.5/appid=a677e1f4b9195e2b3437318ea0473e74&q="
+#api_adress = "API"
 #city = input("City Name:")
 #url = api_adress + city
 #json_data = requests.get(url).json()
