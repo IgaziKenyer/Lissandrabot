@@ -423,7 +423,7 @@ async def info(ctx, user: discord.Member):
 @bot.command(pass_context=True)
 async def embed(ctx):
     embed = discord.Embed(title="test", description="Recepcionista del Gremio", color=0x00ff00)
-    embed.set_footer(text="this is the footer")
+    embed.set_footer(text="HERE IT COMES, THE EDITED FOOTER")
     embed.set_author(name="Igazi Kenyer")
     embed.add_field(name="This is a field", value="no, it isnt", inline=True)
     await bot.say(embed=embed)
